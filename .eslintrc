@@ -5,6 +5,7 @@
     "react"
   ],
   "rules": {
+    "import/prefer-default-export": "off",
     "no-unused-expressions": "off",
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/require-default-props": [ "off" ],
