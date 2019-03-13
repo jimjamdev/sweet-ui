@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '../../utils';
 
-const Button = ({ children, type }) => (
+const Button = memo(({ children, type }) => (
   <ButtonStyle type={type}>{ children }</ButtonStyle>
-);
+));
 
 const ButtonStyle = styled.button`
   outline: none;
@@ -17,7 +17,7 @@ const ButtonStyle = styled.button`
 `;
 
 Button.propTypes = {
-  type: PropTypes.oneOf(['button, submit']),
+  type: PropTypes.oneOf(['button', 'submit']),
   children: PropTypes.any,
 };
 
