@@ -1,2 +1,2 @@
-# rentipo-ui
-UI Library for Rentipo
+# sweet-ui
+A styled-component based UI library
