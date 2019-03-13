@@ -7,6 +7,7 @@ const InputBase = css`
     border: solid 1px #ddd;
     min-height: 2rem;
     padding: 0 0.5rem;
+    width: 100%;
 `;
 
 export { InputBase };
