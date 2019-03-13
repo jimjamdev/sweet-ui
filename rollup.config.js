@@ -19,8 +19,11 @@ export default {
     babel({
       exclude: 'node_modules/**',
     }),
-    resolve(),
+    resolve({
+      jsnext: true,
+      main: true,
+    }),
     commonjs(),
   ],
-  external: id => /^react|react-dom/.test(id),
+  external: id => /^react|react-dom|prop-types/.test(id),
 };

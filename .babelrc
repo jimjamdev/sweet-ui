@@ -5,6 +5,16 @@
   ],
   "plugins": [
     "lodash",
-    ["styled-components", { "ssr": true }]
+    ["styled-components", { "ssr": true }],
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "@atoms": "./atoms",
+        "@molecules": "./molecules",
+        "@organisms": "./organisms",
+        "@theme": "./theme",
+        "@utils": "./utils"
+      }
+    }]
   ]
 }

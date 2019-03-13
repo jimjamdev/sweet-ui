@@ -1,9 +1,19 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb",
-  "plugins": [
-    "react"
+  "extends": [
+    "airbnb",
+    "plugin:import/errors",
+    "plugin:import/warnings"
   ],
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  },
   "rules": {
     "import/prefer-default-export": "off",
     "no-unused-expressions": "off",
