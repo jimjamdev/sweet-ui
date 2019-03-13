@@ -6,7 +6,7 @@
   "scripts": {
     "prepublishOnly": "npm run release",
     "release": "npm run styleguide:build && npm run build:dev && npm run build:prod",
-    "start": "npm run styleguide && nodemon --watch src --exec npm run build:dev",
+    "start": "nodemon -w src -x npm run build:dev && npm run styleguide",
     "build:dev": "NODE_ENV=development rollup -c",
     "build:prod": "npm run styleguide:build && NODE_ENV=production rollup -c",
     "styleguide": "styleguidist server --open",
