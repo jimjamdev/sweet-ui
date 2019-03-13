@@ -1,12 +1,12 @@
 {
   "name": "@jimjamz/sweet-ui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Styled-components based UI library",
   "main": "index.js",
   "scripts": {
     "prepublishOnly": "npm run release",
     "release": "npm run styleguide:build && npm run build:dev && npm run build:prod",
-    "start": "nodemon -w src -x npm run build:dev && npm run styleguide",
+    "start": "nodemon -w src -x npm run build:dev",
     "build:dev": "NODE_ENV=development rollup -c",
     "build:prod": "npm run styleguide:build && NODE_ENV=production rollup -c",
     "styleguide": "styleguidist server --open",

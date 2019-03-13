@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '../../../utils';
-import InputBase from '../../../styles/InputBase';
+import { InputBase } from '../../../styles/InputBase';
 
 const Input = memo(({
   name, type, placeholder, disabled, ...rest

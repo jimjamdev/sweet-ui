@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { isEmpty } from 'lodash';
 import { styled } from '../../../utils';
-import InputBase from '../../../styles/InputBase';
+import { InputBase } from '../../../styles/InputBase';
 
 const Select = memo(({
   options, name, placeholder, value, disabled, onChange,

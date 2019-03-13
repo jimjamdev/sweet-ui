@@ -9,4 +9,4 @@ const InputBase = css`
     padding: 0 0.5rem;
 `;
 
-export default InputBase;
+export { InputBase };
