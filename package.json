@@ -1,8 +1,8 @@
 {
-  "name": "sweet-ui",
-  "version": "0.0.1",
-  "description": "UI Library for rentipo.com",
-  "main": "./dist/index.js",
+  "name": "@jimjamz/sweet-ui",
+  "version": "1.0.0",
+  "description": "Styled-components based UI library",
+  "main": "index.js",
   "scripts": {
     "prepublishOnly": "npm run release",
     "release": "npm run build:dev && npm run build:prod",
@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/jimmyjamieson/sweet-ui/issues"
   },
-  "homepage": "https://github.com/jimmyjamieson/sweet-ui#readme",
+  "homepage": "https://jimmyjamieson.github.io/sweet-ui/",
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
@@ -41,10 +41,7 @@
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.1",
     "rollup-plugin-node-resolve": "^4.0.1",
-    "rollup-plugin-replace": "^2.1.0",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.2.3",
-    "webpack-node-externals": "^1.7.2"
+    "rollup-plugin-replace": "^2.1.0"
   },
   "dependencies": {
     "lodash": "^4.17.11",
@@ -54,5 +51,12 @@
   "peerDependencies": {
     "react": "*",
     "react-dom": "*"
-  }
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "keywords": [
+    "styled-components",
+    "ui"
+  ]
 }
