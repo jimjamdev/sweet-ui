@@ -4,7 +4,7 @@ module.exports = {
   entry: path.resolve(__dirname, 'src/index.js'),
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: 'rentipo-ui.js',
+    filename: 'index.js',
     library: 'rentipo-ui',
     libraryTarget: 'umd',
     publicPath: '/dist/',
@@ -24,7 +24,7 @@ module.exports = {
   },
   resolve: {
     alias: {
-      'react': path.resolve(__dirname, './node_modules/react'),
+      react: path.resolve(__dirname, './node_modules/react'),
       'react-dom': path.resolve(__dirname, './node_modules/react-dom'),
     },
   },

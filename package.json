@@ -8,12 +8,17 @@
     "start": "rm -r dist && nodemon --watch src --exec webpack --mode=development",
     "prepublish": "rm -rf ./dist && npm run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jimmyjamieson/rentipo-ui.git"
+  },
+  "author": "Ian Jamieson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jimmyjamieson/rentipo-ui/issues"
+  },
+  "homepage": "https://github.com/jimmyjamieson/rentipo-ui#readme",
   "devDependencies": {
-    "lodash": "^4.17.11",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "styled-components": "^4.1.3",
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.3.4",
     "@babel/node": "^7.2.2",
@@ -33,21 +38,13 @@
     "webpack-cli": "^3.2.3",
     "webpack-node-externals": "^1.7.2"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jimmyjamieson/rentipo-ui.git"
-  },
-  "author": "Ian Jamieson",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jimmyjamieson/rentipo-ui/issues"
-  },
-  "homepage": "https://github.com/jimmyjamieson/rentipo-ui#readme",
-  "peerDependencies":  {
+  "dependencies":  {
     "lodash": "^4.17.11",
     "prop-types": "^15.7.2",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
     "styled-components": "^4.1.3"
+  },
+  "peerDependencies":  {
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
   }
 }
