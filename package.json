@@ -8,7 +8,8 @@
     "release": "npm run build:dev && npm run build:prod",
     "start": "nodemon --watch src --exec npm run build:dev",
     "build:dev": "NODE_ENV=development rollup -c",
-    "build:prod": "NODE_ENV=production rollup -c"
+    "build:prod": "NODE_ENV=production rollup -c",
+    "clean": "rm -r ./dist"
   },
   "repository": {
     "type": "git",
