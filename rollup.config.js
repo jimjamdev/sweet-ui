@@ -2,6 +2,8 @@ import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import replace from 'rollup-plugin-replace';
+import analyze from 'rollup-plugin-analyzer';
+import visualizer from 'rollup-plugin-visualizer';
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const outputFile = NODE_ENV === 'production' ? './dist/prod.js' : './dist/dev.js';
@@ -22,6 +24,10 @@ export default {
     resolve({
       jsnext: true,
       main: true,
+    }),
+    analyze(),
+    visualizer({
+      filename: './docs/stats/index.html',
     }),
     commonjs(),
   ],
