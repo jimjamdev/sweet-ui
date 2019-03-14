@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-import { styled } from '../../utils';
+import { styled, isClient, createGlobalStyle } from '../../utils';
 import Button from '../Button';
 
 const Overlay = ({ children, open, onClose }) => {
@@ -17,10 +18,13 @@ const Overlay = ({ children, open, onClose }) => {
   }, [open]);
 
   return (
-    <OverlayContainer isOpen={isOpen}>
-      <Button onClick={close}>Close</Button>
-      {children}
-    </OverlayContainer>
+    ReactDOM.createPortal(
+      <OverlayContainer isOpen={isOpen} onTouchStart={e => e.preventDefault()}>
+        <OverlayBodyStyle isOpen={isOpen} />
+        <Button onClick={close}>Close</Button>
+        {children}
+      </OverlayContainer>, isClient && document.body,
+    )
   );
 };
 
@@ -36,6 +40,19 @@ const OverlayContainer = styled.div`
     background: rgba(0,0,0,0.8);
     z-index: 999;
     overflow: hidden;
+`;
+
+const OverlayBodyStyle = createGlobalStyle`
+  html, body {
+    ${(props) => {
+    const { isOpen } = props;
+    if (!isOpen) return null;
+    return `
+            overflow: hidden;
+            -webkit-overflow-scrolling: touch;
+        `;
+  }};
+  }
 `;
 
 Overlay.propTypes = {

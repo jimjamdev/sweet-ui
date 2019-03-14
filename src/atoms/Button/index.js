@@ -14,6 +14,9 @@ const ButtonStyle = styled.button`
   padding: 0.5rem 2rem;
   border-radius: 3rem;
   background: tomato;
+  &:hover {
+    background: lightcoral;
+  }
 `;
 
 Button.propTypes = {
