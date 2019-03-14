@@ -2,8 +2,8 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '../../utils';
 
-const Button = memo(({ children, type }) => (
-  <ButtonStyle type={type}>{ children }</ButtonStyle>
+const Button = memo(({ children, type, onClick }) => (
+  <ButtonStyle type={type} onClick={onClick}>{ children }</ButtonStyle>
 ));
 
 const ButtonStyle = styled.button`
@@ -19,6 +19,7 @@ const ButtonStyle = styled.button`
 Button.propTypes = {
   type: PropTypes.oneOf(['button', 'submit']),
   children: PropTypes.any,
+  onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
