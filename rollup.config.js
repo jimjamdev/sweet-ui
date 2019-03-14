@@ -26,10 +26,10 @@ export default {
       main: true,
     }),
     uglify(),
+    commonjs(),
     visualizer({
       filename: './docs/stats/index.html',
     }),
-    commonjs(),
   ],
   external: id => /^react|react-dom|prop-types/.test(id),
 };
