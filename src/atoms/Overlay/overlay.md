@@ -7,9 +7,7 @@ initialState = { isOpen: false };
     <Button onClick={() => setState({ isOpen: true })}>
         Open Overlay
     </Button>
-    <Overlay 
-    open={state.isOpen} 
-    onClose={() => setState({ isOpen: false })}>
+    <Overlay open={state.isOpen} onClose={() => setState({ isOpen: false })}>
         <p>Content</p>
     </Overlay>
 </div>
