@@ -2,7 +2,7 @@ import babel from 'rollup-plugin-babel';
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import replace from 'rollup-plugin-replace';
-import analyze from 'rollup-plugin-analyzer';
+import { uglify } from 'rollup-plugin-uglify';
 import visualizer from 'rollup-plugin-visualizer';
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -25,7 +25,7 @@ export default {
       jsnext: true,
       main: true,
     }),
-    analyze(),
+    uglify(),
     visualizer({
       filename: './docs/stats/index.html',
     }),
