@@ -65,4 +65,5 @@ Overlay.defaultProps = {
   open: false,
 };
 
+/** @component */
 export default Overlay;
