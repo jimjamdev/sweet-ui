@@ -1,3 +1,3 @@
 ```js
-<Icon />
+<Icon icon="home" />
 ```

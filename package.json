@@ -1,6 +1,6 @@
 {
   "name": "@jimjamz/sweet-ui",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Styled-components based UI library",
   "main": "index.js",
   "scripts": {
