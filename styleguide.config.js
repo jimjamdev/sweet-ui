@@ -11,5 +11,10 @@ module.exports = {
       components: 'src/atoms/**/*.js',
       ignore: 'src/atoms/index.js',
     },
+    {
+      name: 'Molecules',
+      components: 'src/molecules/**/*.js',
+      ignore: 'src/molecules/index.js',
+    },
   ],
 };

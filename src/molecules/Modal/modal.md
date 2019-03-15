@@ -1,0 +1,3 @@
+```js
+<Modal>content</Modal>
+```
