@@ -9,7 +9,8 @@ const Avatar = ({ image, alt, scale }) => (
 const AvatarStyle = styled.img`
     border-radius: 500rem;
     width: ${({ scale }) => scale}rem;
-    height: auto;
+    height: ${({ scale }) => scale}rem;
+    object-fit: cover;
 `;
 
 Avatar.propTypes = {
