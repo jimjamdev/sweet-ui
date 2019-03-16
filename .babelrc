@@ -5,6 +5,7 @@
   ],
   "plugins": [
     "lodash",
+    "@babel/plugin-syntax-dynamic-import",
     ["styled-components", { "ssr": true }],
     ["module-resolver", {
       "root": ["./src"],

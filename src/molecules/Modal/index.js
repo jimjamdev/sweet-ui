@@ -37,6 +37,7 @@ const ModalWrapper = styled.div`
   color: #333333;
   background: white;
   border-radius: 0.4rem;
+  min-height: 50vh;
   min-width: 70vw;
 `;
 
