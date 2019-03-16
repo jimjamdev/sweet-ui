@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 import { styled } from '../../utils';
 import Overlay from '../../atoms/Overlay';
@@ -33,6 +34,7 @@ const Modal = ({
 };
 
 const ModalWrapper = styled.div`
+  color: #333333;
   background: white;
   border-radius: 0.4rem;
   min-width: 70vw;
@@ -49,4 +51,16 @@ const ModalContent = styled.header`
   padding: 1rem;
 `;
 
+Modal.propTypes = {
+  /** The Modal header title */
+  title: PropTypes.string,
+  /** Your inner content for the component will be shown here */
+  children: PropTypes.any,
+  /** Pass true or false to open/close the Modal */
+  open: PropTypes.bool,
+  /** A function passed from Modal onClose */
+  onClose: PropTypes.func,
+};
+
+/** @component */
 export default Modal;

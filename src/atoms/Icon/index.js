@@ -44,4 +44,4 @@ Icon.defaultProps = {
 };
 
 /** @component */
-export default withTheme(Icon);
+export default Icon;
