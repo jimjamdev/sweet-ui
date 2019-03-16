@@ -4,9 +4,12 @@ const getGeoLocation = () => {
   if (isClient) {
     if ('geolocation' in navigator) {
       /* geolocation is available */
-    } else {
-      /* geolocation IS NOT available */
+      return navigator.geolocation.getCurrentPosition(success => success, error => error);
     }
+    /* geolocation IS NOT available */
+    return {
+      error: 'GeoLocation is not available',
+    };
   }
   return null;
 };
