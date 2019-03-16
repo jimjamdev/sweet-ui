@@ -2,6 +2,7 @@ import React, {
   useState, Suspense, lazy, useEffect,
 } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
+import { get } from 'lodash';
 import PropTypes from 'prop-types';
 import { getGeoLocation } from '../../utils';
 
@@ -9,24 +10,26 @@ import { getGeoLocation } from '../../utils';
 
 
 const GeoMap = ({ token }) => {
-  const [currentLocation, setCurrentLocation] = useState({});
+  const [currentLocation, setCurrentLocation] = useState(null);
 
   useEffect(() => {
-    const getUserCurrentLocation = async () => {
-      const result = await getGeoLocation();
-      setCurrentLocation(result);
-    };
-    getUserCurrentLocation();
+    getGeoLocation().then((data) => {
+      setCurrentLocation(data.coords);
+    });
   }, []);
+
+  const longitude = get(currentLocation, 'longitude', 0);
+  const latitude = get(currentLocation, 'latitude', 0);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <ReactMapGL
         width="auto"
-        height="500px"
-        latitude={37.7577}
-        longitude={-122.4376}
-        zoom={8}
+        height="380px"
+        latitude={latitude}
+        longitude={longitude}
+        zoom={12}
+        dragPan
         mapboxApiAccessToken={token}
         onViewportChange={(viewport) => {
           const {
@@ -35,9 +38,8 @@ const GeoMap = ({ token }) => {
             // Optionally call `setState` and use the state to update the map.
         }}
       >
-        {currentLocation && (
-          <Marker latitude={37.7577} longitude={-122.4376}>
-            {console.log('currentLocation', currentLocation && currentLocation)}
+        {longitude && latitude && (
+          <Marker latitude={currentLocation.latitude} longitude={currentLocation.longitude}>
                   You are here
           </Marker>
         )}
