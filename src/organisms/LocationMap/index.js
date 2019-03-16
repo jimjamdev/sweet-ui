@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import PropTypes from 'prop-types';
 
 const ReactMapGL = lazy(() => import('react-map-gl'));
+import { getGeoLocation } from "../../utils";
 
 
 const LocationMap = ({ token }) => (
