@@ -1,10 +1,19 @@
 import isClient from './isClient';
 
 const getGeoLocation = () => {
+  const successful = (position) => {
+    console.log(position);
+    return position;
+  };
+  const errored = (error) => {
+    console.log(error);
+    return error;
+  };
+
   if (isClient) {
     if ('geolocation' in navigator) {
       /* geolocation is available */
-      return navigator.geolocation.getCurrentPosition(success => success, error => error);
+      navigator.geolocation.getCurrentPosition(successful, errored);
     }
     /* geolocation IS NOT available */
     return {

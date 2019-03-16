@@ -1,14 +1,24 @@
-import React, { Suspense, lazy, useEffect } from 'react';
+import React, {
+  useState, Suspense, lazy, useEffect,
+} from 'react';
+import ReactMapGL, { Marker } from 'react-map-gl';
 import PropTypes from 'prop-types';
 import { getGeoLocation } from '../../utils';
 
-const ReactMapGL = lazy(() => import('react-map-gl'));
+// const ReactMapGL = lazy(() => import('react-map-gl'));
 
 
 const GeoMap = ({ token }) => {
+  const [currentLocation, setCurrentLocation] = useState({});
+
   useEffect(() => {
-    getGeoLocation();
-  });
+    const getUserCurrentLocation = async () => {
+      const result = await getGeoLocation();
+      setCurrentLocation(result);
+    };
+    getUserCurrentLocation();
+  }, []);
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <ReactMapGL
@@ -24,7 +34,14 @@ const GeoMap = ({ token }) => {
           } = viewport;
             // Optionally call `setState` and use the state to update the map.
         }}
-      />
+      >
+        {currentLocation && (
+          <Marker latitude={37.7577} longitude={-122.4376}>
+            {console.log('currentLocation', currentLocation && currentLocation)}
+                  You are here
+          </Marker>
+        )}
+      </ReactMapGL>
     </Suspense>
   );
 };
