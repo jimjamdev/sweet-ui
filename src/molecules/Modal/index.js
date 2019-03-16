@@ -24,7 +24,7 @@ const Modal = ({
       <ModalWrapper>
         <ModalHeader>
           <div>{title}</div>
-          <Icon icon="close" scale={ 1 } onClick={close} />
+          <Icon icon="close" scale={1} onClick={close} />
         </ModalHeader>
         <ModalContent>{children}</ModalContent>
       </ModalWrapper>
