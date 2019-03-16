@@ -40,7 +40,7 @@ Icon.propTypes = {
 
 Icon.defaultProps = {
   icon: 'home',
-  scale: '1',
+  scale: '1.25',
 };
 
 /** @component */

@@ -9,12 +9,12 @@ module.exports = {
     {
       name: 'Atoms',
       components: 'src/atoms/**/*.js',
-      ignore: 'src/atoms/index.js',
+      ignore: ['src/atoms/index.js', 'src/atoms/Inputs/index.js'],
     },
     {
       name: 'Molecules',
       components: 'src/molecules/**/*.js',
-      ignore: 'src/molecules/index.js',
+      ignore: ['src/molecules/index.js'],
     },
   ],
 };

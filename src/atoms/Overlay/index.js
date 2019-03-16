@@ -1,32 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { styled, isClient, createGlobalStyle } from '../../utils';
-import Button from '../Button';
 
-const Overlay = ({ children, open, onClose }) => {
-  const [isOpen, setOverlayOpen] = useState(open);
-
-  const close = (e) => {
-    e.stopPropagation();
-    onClose();
-    setOverlayOpen(false);
-  };
-
-  useEffect(() => {
-    setOverlayOpen(open);
-  }, [open]);
-
-  return (
-    ReactDOM.createPortal(
-      <OverlayContainer isOpen={isOpen} onTouchStart={e => e.preventDefault()}>
-        <OverlayBodyStyle isOpen={isOpen} />
-        <Button onClick={close}>Close</Button>
-        {children}
-      </OverlayContainer>, isClient && document.body,
-    )
-  );
-};
+const Overlay = ({ children, open }) => (
+  ReactDOM.createPortal(
+    <OverlayContainer isOpen={open} onTouchStart={e => e.preventDefault()}>
+      <OverlayBodyStyle isOpen={open} />
+      {children}
+    </OverlayContainer>, isClient && document.body,
+  )
+);
 
 const OverlayContainer = styled.div`
     display: ${({ isOpen }) => (isOpen ? 'flex' : 'none')};
@@ -36,8 +20,10 @@ const OverlayContainer = styled.div`
     align-items: center;
     
     position: fixed;
-    left: 0; right: 0; top: 0; bottom: 0;
-    background: rgba(0,0,0,0.8);
+    top: 0; bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
     z-index: 999;
     overflow: hidden;
 `;
