@@ -29,7 +29,8 @@ const GeoMap = ({ token }) => {
         latitude={latitude}
         longitude={longitude}
         zoom={12}
-        dragPan
+        showCompass
+        showZoom
         mapboxApiAccessToken={token}
         onViewportChange={(viewport) => {
           const {
