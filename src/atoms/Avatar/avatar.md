@@ -1,5 +1,5 @@
 Avatar
 
 ```js
-<Avatar image="/static/avatar.jpeg" scale={ 4 } alt="Example Image" />
+<Avatar image="/avatar.jpeg" scale={ 4 } alt="Example Image" />
 ```
