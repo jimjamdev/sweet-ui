@@ -1,54 +1,60 @@
-import React, {
-  useState, Suspense, lazy, useEffect,
-} from 'react';
+import React, { useState, Suspense, useEffect } from 'react';
 import ReactMapGL, { Marker } from 'react-map-gl';
-import { get } from 'lodash';
+import 'mapbox-gl/dist/mapbox-gl.css';
 import PropTypes from 'prop-types';
 import { getGeoLocation } from '../../utils';
 
 // const ReactMapGL = lazy(() => import('react-map-gl'));
 
+const defaultView = {
+  longitude: 0,
+  latitude: 0,
+  zoom: 12,
+};
+
 
 const GeoMap = ({ token }) => {
-  const [currentLocation, setCurrentLocation] = useState(null);
+  const [currentLocation, setCurrentLocation] = useState(defaultView);
+  const [viewport, setViewport] = useState(defaultView);
 
   useEffect(() => {
     getGeoLocation().then((data) => {
-      console.log('$data', data);
       setCurrentLocation({
+        ...currentLocation,
+        longitude: data.coords.longitude,
+        latitude: data.coords.latitude,
+      });
+      setViewport({
+        ...viewport,
         longitude: data.coords.longitude,
         latitude: data.coords.latitude,
       });
     });
   }, []);
 
-  const longitude = get(currentLocation, 'longitude', 0);
-  const latitude = get(currentLocation, 'latitude', 0);
-
-  console.log('$$$ State', currentLocation);
-
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <ReactMapGL
         width="auto"
         height="380px"
-        latitude={latitude}
-        longitude={longitude}
-        zoom={12}
+        latitude={viewport.latitude}
+        longitude={viewport.longitude}
+        zoom={viewport.zoom}
         showCompass
         showZoom
         mapboxApiAccessToken={token}
-        onViewportChange={(viewport) => {
+        onViewportChange={(newViewport) => {
           const {
             width, height, latitude, longitude, zoom,
-          } = viewport;
-          setCurrentLocation({
+          } = newViewport;
+          setViewport({
             longitude,
             latitude,
+            zoom,
           });
         }}
       >
-        {longitude && latitude && (
+        {currentLocation.longitude && currentLocation.latitude && (
           <Marker latitude={currentLocation.latitude} longitude={currentLocation.longitude}>
                   You are here
           </Marker>

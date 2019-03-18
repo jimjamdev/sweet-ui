@@ -5,6 +5,7 @@ import replace from 'rollup-plugin-replace';
 import { uglify } from 'rollup-plugin-uglify';
 import visualizer from 'rollup-plugin-visualizer';
 import async from 'rollup-plugin-async';
+import postcss from 'rollup-plugin-postcss'
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const outputFile = NODE_ENV === 'production' ? './dist/prod.js' : './dist/dev.js';
@@ -27,6 +28,9 @@ export default {
     resolve({
       jsnext: true,
       main: true,
+    }),
+    postcss({
+      modules: true,
     }),
     uglify(),
     commonjs(),
