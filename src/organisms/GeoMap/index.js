@@ -14,12 +14,18 @@ const GeoMap = ({ token }) => {
 
   useEffect(() => {
     getGeoLocation().then((data) => {
-      setCurrentLocation(data.coords);
+      console.log('$data', data);
+      setCurrentLocation({
+        longitude: data.coords.longitude,
+        latitude: data.coords.latitude,
+      });
     });
   }, []);
 
   const longitude = get(currentLocation, 'longitude', 0);
   const latitude = get(currentLocation, 'latitude', 0);
+
+  console.log('$$$ State', currentLocation);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -36,7 +42,10 @@ const GeoMap = ({ token }) => {
           const {
             width, height, latitude, longitude, zoom,
           } = viewport;
-            // Optionally call `setState` and use the state to update the map.
+          setCurrentLocation({
+            longitude,
+            latitude,
+          });
         }}
       >
         {longitude && latitude && (
