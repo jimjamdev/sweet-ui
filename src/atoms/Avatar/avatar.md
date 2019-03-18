@@ -1,5 +1,5 @@
 Avatar
 
 ```js
-<Avatar image="http://i.pravatar.cc/200" scale={ 4 } alt="Example Image" />
+<Avatar image="/static/avatar.jpeg" scale={ 4 } alt="Example Image" />
 ```
