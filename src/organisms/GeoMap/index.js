@@ -1,5 +1,5 @@
 import React, {
-  Fragment, useState, Suspense, useEffect,
+  Fragment, useState, useEffect,
 } from 'react';
 import ReactMapGL, { Marker, NavigationControl, FullscreenControl } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -34,39 +34,35 @@ const GeoMap = ({ token }) => {
     });
   }, []);
 
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ReactMapGL
-        width="auto"
-        height="380px"
-        latitude={viewport.latitude}
-        longitude={viewport.longitude}
-        zoom={viewport.zoom}
-        showCompass
-        showZoom
-        mapboxApiAccessToken={token}
-        onViewportChange={(newViewport) => {
-          const {
-            width, height, latitude, longitude, zoom,
-          } = newViewport;
-          setViewport({
-            longitude,
-            latitude,
-            zoom,
-          });
-        }}
-      >
-        <Fragment>
-          <NavigationControl onViewportChange={setViewport} />
-          <FullscreenControl container={document.querySelector('body')[0]} />
-          {currentLocation.longitude && currentLocation.latitude && (
+  return viewport.longitude && viewport.latitude && (
+    <ReactMapGL
+      width="auto"
+      height="380px"
+      latitude={viewport.latitude}
+      longitude={viewport.longitude}
+      zoom={viewport.zoom}
+      showCompass
+      showZoom
+      mapboxApiAccessToken={token}
+      onViewportChange={(newViewport) => {
+        const { latitude, longitude, zoom } = newViewport;
+        setViewport({
+          longitude,
+          latitude,
+          zoom,
+        });
+      }}
+    >
+      <Fragment>
+        <NavigationControl onViewportChange={setViewport} />
+        <FullscreenControl container={document.querySelector('body')[0]} />
+        {currentLocation.longitude && currentLocation.latitude && (
           <Marker latitude={currentLocation.latitude} longitude={currentLocation.longitude}>
                 You are here
           </Marker>
-          )}
-        </Fragment>
-      </ReactMapGL>
-    </Suspense>
+        )}
+      </Fragment>
+    </ReactMapGL>
   );
 };
 
