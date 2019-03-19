@@ -1,5 +1,7 @@
-import React, { useState, Suspense, useEffect } from 'react';
-import ReactMapGL, { Marker } from 'react-map-gl';
+import React, {
+  Fragment, useState, Suspense, useEffect,
+} from 'react';
+import ReactMapGL, { Marker, NavigationControl, FullscreenControl } from 'react-map-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import PropTypes from 'prop-types';
 import { getGeoLocation } from '../../utils';
@@ -54,11 +56,15 @@ const GeoMap = ({ token }) => {
           });
         }}
       >
-        {currentLocation.longitude && currentLocation.latitude && (
+        <Fragment>
+          <NavigationControl onViewportChange={setViewport} />
+          <FullscreenControl container={document.querySelector('body')[0]} />
+          {currentLocation.longitude && currentLocation.latitude && (
           <Marker latitude={currentLocation.latitude} longitude={currentLocation.longitude}>
-                  You are here
+                You are here
           </Marker>
-        )}
+          )}
+        </Fragment>
       </ReactMapGL>
     </Suspense>
   );
