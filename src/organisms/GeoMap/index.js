@@ -32,9 +32,9 @@ const GeoMap = ({ token }) => {
         latitude: data.coords.latitude,
       });
     });
-  }, []);
+  }, [currentLocation]);
 
-  return viewport.longitude && viewport.latitude && (
+  return viewport.longitude ? (
     <ReactMapGL
       width="auto"
       height="380px"
@@ -54,8 +54,8 @@ const GeoMap = ({ token }) => {
       }}
     >
       <Fragment>
-        <NavigationControl onViewportChange={setViewport} />
-        <FullscreenControl container={document.querySelector('body')[0]} />
+        <NavigationControl onViewportChange={setViewport} style={{ position: 'absolute', right: '0' }} />
+        <FullscreenControl container={document.querySelector('body')[0]} style={{ position: 'absolute', bottom: '0' }} />
         {currentLocation.longitude && currentLocation.latitude && (
           <Marker latitude={currentLocation.latitude} longitude={currentLocation.longitude}>
                 You are here
@@ -63,7 +63,7 @@ const GeoMap = ({ token }) => {
         )}
       </Fragment>
     </ReactMapGL>
-  );
+  ) : '...Getting your location';
 };
 
 GeoMap.propTypes = {

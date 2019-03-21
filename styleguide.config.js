@@ -22,7 +22,11 @@ module.exports = {
     {
       name: 'Organisms',
       components: 'src/organisms/**/*.js',
-      ignore: ['src/organisms/index.js'],
+      ignore: [
+        'src/organisms/index.js',
+        'src/organisms/Tabs/Tab.js',
+        'src/organisms/Tabs/TabItem.js',
+      ],
     },
   ],
 };
